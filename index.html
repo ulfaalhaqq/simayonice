@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Si Mayonice - Premium UI/UX Design Agency</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      /* --- CSS RESET & VARIABLES --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-gold: #D4AF37; /* Classic Gold */
+        --light-gold: #F3E5AB;
+        --dark-gold: #AA8C2C;
+        --text-dark: #1a1a1a;
+        --text-gray: #666666;
+        --white: #ffffff;
+        --bg-light: #f9f9f9;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        --transition: all 0.3s ease;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background-color: var(--white);
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      /* --- UTILITY CLASSES --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: var(--transition);
+        cursor: pointer;
+        border: 2px solid transparent;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, var(--primary-gold), var(--dark-gold));
+        color: var(--white);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--primary-gold);
+        color: var(--primary-gold);
+      }
+
+      .btn-outline:hover {
+        background: var(--primary-gold);
+        color: var(--white);
+      }
+
+      .btn-small {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+
+      .btn-block {
+        display: block;
+        width: 100%;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title span {
+        color: var(--primary-gold);
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: var(--text-gray);
+        max-width: 600px;
+        margin: 0 auto 4rem auto;
+      }
+
+      /* --- ANIMATION CLASSES --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- NAVBAR --- */
+      nav {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: var(--transition);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo i {
+        color: var(--primary-gold);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        font-size: 0.95rem;
+        position: relative;
+        color: var(--text-dark);
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--primary-gold);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-gold);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .menu-btn {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-dark);
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        padding: 160px 0 100px 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 40%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-text h1 span {
+        color: var(--primary-gold);
+        position: relative;
+      }
+      
+      .hero-text h1 span::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: rgba(212, 175, 55, 0.2);
+        z-index: -1;
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+        color: var(--text-gray);
+        margin-bottom: 2.5rem;
+        max-width: 90%;
+      }
+
+      .hero-btn-group {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .hero-image {
+        position: relative;
+        text-align: center;
+      }
+
+      .hero-card {
+        background: var(--white);
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        padding: 2rem;
+        position: relative;
+        z-index: 2;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-icon {
+        font-size: 5rem;
+        background: linear-gradient(45deg, var(--primary-gold), var(--dark-gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+
+      /* --- ABOUT SECTION --- */
+      .about {
+        padding: 100px 0;
+        background: var(--white);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .about-card {
+        padding: 2.5rem;
+        text-align: center;
+        border-radius: 15px;
+        background: var(--white);
+        border: 1px solid #eee;
+        transition: var(--transition);
+      }
+
+      .about-card:hover {
+        border-color: var(--primary-gold);
+        box-shadow: var(--shadow);
+        transform: translateY(-10px);
+      }
+
+      .icon-box {
+        width: 70px;
+        height: 70px;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem auto;
+        color: var(--primary-gold);
+        font-size: 1.5rem;
+      }
+
+      .about-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .about-card p {
+        font-size: 0.95rem;
+        color: var(--text-gray);
+      }
+
+      /* --- SERVICES (DESIGN PACKAGES ONLY) --- */
+      .services {
+        padding: 100px 0;
+        background: var(--bg-light);
+      }
+
+      .services-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .service-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        border: 1px solid rgba(0,0,0,0.05);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.1);
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+
+      .service-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 6px;
+        background: var(--primary-gold);
+      }
+
+      .service-info {
+        padding: 2.5rem;
+        flex: 1;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+
+      .service-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--primary-gold);
+        flex-shrink: 0;
+      }
+
+      .service-details h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        color: var(--text-dark);
+      }
+
+      .service-features {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .service-features li {
+        font-size: 0.9rem;
+        color: var(--text-gray);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f4f4f4;
+        padding: 5px 12px;
+        border-radius: 50px;
+      }
+
+      .service-features li i {
+        color: var(--primary-gold);
+        font-size: 0.8rem;
+      }
+
+      .service-action {
+        background: #fafafa;
+        padding: 2.5rem;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-left: 1px solid #eee;
+        height: 100%;
+        min-height: 200px;
+      }
+
+      .price-tag {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-gold);
+        margin-bottom: 0.2rem;
+      }
+
+      .price-period {
+        font-size: 0.85rem;
+        color: #999;
+        margin-bottom: 1.5rem;
+      }
+
+      /* --- PORTFOLIO SECTION (REVISED: VERTICAL TALL CARDS) --- */
+      .portfolio {
+        padding: 100px 0;
+        background: var(--white);
+      }
+
+      .portfolio-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem;
+      }
+
+      /* Setting Vertical Card Dimensions */
+      .portfolio-item {
+        background: var(--white);
+        border-radius: 15px;
+        overflow: hidden;
+        width: 280px; /* Lebar sempit */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+        border-color: var(--primary-gold);
+      }
+
+      /* Tinggi gambar dimaksimalkan untuk kesan layar HP */
+      .portfolio-thumb {
+        width: 100%;
+        height: 230px; /* Tinggi dimaksimalkan */
+        object-fit: cover;
+        object-position: top;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .portfolio-info {
+        padding: 1.5rem;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .portfolio-tag {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-gray);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .portfolio-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-price {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary-gold);
+        margin-bottom: 1.2rem;
+        display: block;
+      }
+
+      /* --- LOCATION SECTION --- */
+      .location {
+        padding: 100px 0;
+        background: var(--bg-light);
+      }
+
+      .location-container {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 3rem;
+        background: var(--white);
+        padding: 1rem;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .location-info {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .info-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--text-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-gold);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .info-text h4 {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .info-text p {
+        color: var(--text-gray);
+        font-size: 0.95rem;
+      }
+
+      .map-wrapper {
+        width: 100%;
+        height: 100%;
+        min-height: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* --- CTA SECTION --- */
+      .cta {
+        padding: 80px 0;
+        background: var(--text-dark);
+        color: var(--white);
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .cta p {
+        color: #ccc;
+        margin-bottom: 2rem;
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background: #111;
+        color: #fff;
+        padding: 60px 0 20px 0;
+        border-top: 3px solid var(--primary-gold);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .footer-brand h3 i {
+        color: var(--primary-gold);
+      }
+
+      .footer-brand p {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      .footer-links h4, .footer-contact h4 {
+        color: var(--primary-gold);
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: #ccc;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--primary-gold);
+        padding-left: 5px;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #222;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 968px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-text h1 {
+          font-size: 2.8rem;
+        }
+
+        .hero-btn-group {
+          justify-content: center;
+        }
+
+        .hero-text p {
+          margin: 0 auto 2.5rem auto;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .location-container {
+          grid-template-columns: 1fr;
+        }
+
+        .map-wrapper {
+          height: 300px;
+        }
+        
+        .service-info {
+           padding: 2rem;
+           gap: 1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          right: -100%;
+          width: 100%;
+          background: var(--white);
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem 0;
+          box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+          transition: var(--transition);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .menu-btn {
+          display: block;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            width: 100%;
+        }
+
+        .service-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .service-card::before {
+            width: 100%;
+            height: 6px;
+        }
+
+        .service-info {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .service-features {
+            justify-content: center;
+        }
+
+        .service-action {
+            width: 100%;
+            border-left: none;
+            border-top: 1px solid #eee;
+            padding: 2rem;
+            min-height: auto;
+        }
+        
+        .portfolio-grid {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .portfolio-item {
+            width: 100%;
+            max-width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <div class="container nav-content">
+        <a href="#" class="logo">
+          <i class="fas fa-layer-group"></i> Si Mayonice
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#services">Jasa</a></li>
+          <li><a href="#portfolio">Katalog</a></li>
+          <li><a href="#location">Lokasi</a></li>
+          <li><a href="#contact" style="color: var(--primary-gold); font-weight: 700;">Hubungi Kami</a></li>
+        </ul>
+        <div class="menu-btn" id="menuBtn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text reveal">
+          <h1>Jasa UI/UX Design <br><span>Profesional & Estetik</span></h1>
+          <p>Tingkatkan tampilan bisnis digital Anda. Kami menyediakan desain antarmuka (UI) yang modern tanpa layanan coding/pembuatan aplikasi.</p>
+          <div class="hero-btn-group">
+            <a href="#services" class="btn btn-primary">
+              <i class="fas fa-tags"></i> Lihat Paket Design
+            </a>
+            <a href="#portfolio" class="btn btn-outline">Lihat Katalog</a>
+          </div>
+        </div>
+        <div class="hero-image reveal">
+          <div class="hero-card">
+            <i class="fas fa-pencil-ruler floating-icon"></i>
+            <h3 style="margin-top: 1rem;">Pure Design</h3>
+            <p style="color: var(--text-gray);">Focus on Visual & UX</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">Kenapa <span>Kami?</span></h2>
+        <p class="section-subtitle">Spesialis desain visual untuk produk digital Anda.</p>
+        
+        <div class="about-grid">
+          <div class="about-card reveal">
+            <div class="icon-box">
+              <i class="fas fa-pen-nib"></i>
+            </div>
+            <h3>Original Design</h3>
+            <p>Desain dibuat dari nol menggunakan Figma, disesuaikan dengan branding Anda.</p>
+          </div>
+          <div class="about-card reveal">
+            <div class="icon-box">
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <h3>Asset Lengkap</h3>
+            <p>Anda mendapatkan file master, font, icon, dan aset gambar siap pakai untuk developer Anda.</p>
+          </div>
+          <div class="about-card reveal">
+            <div class="icon-box">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>User Friendly</h3>
+            <p>Tampilan tidak hanya cantik, tapi juga mudah digunakan oleh user (UX Oriented).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES (Pure Design) -->
+    <section class="services" id="services">
+      <div class="container">
+        <h2 class="section-title">Pilihan <span>Paket Design</span></h2>
+        <p class="section-subtitle">Kami hanya melayani pembuatan desain UI/UX (File Figma).</p>
+
+        <div class="services-container">
+          
+          <!-- Package 1: Basic UI -->
+          <div class="service-card reveal">
+            <div class="service-info">
+              <div class="service-icon-wrapper">
+                <i class="fas fa-image"></i>
+              </div>
+              <div class="service-details">
+                <h3>Design Landing Page</h3>
+                <ul class="service-features">
+                  <li><i class="fas fa-check"></i> 1 Halaman Panjang</li>
+                  <li><i class="fas fa-check"></i> Desain Desktop & Mobile</li>
+                  <li><i class="fas fa-check"></i> File Master Figma</li>
+                  <li><i class="fas fa-check"></i> Aset Gambar (JPG/PNG/SVG)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="service-action">
+              <div class="price-tag">Rp 500rb</div>
+              <div class="price-period">per desain</div>
+              <a href="https://wa.me/6283861298487?text=Halo%20saya%20mau%20tanya%20tentang%20jasa%20ui%20ux%20si%20mayonice" target="_blank" class="btn btn-outline btn-small">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+              </a>
+            </div>
+          </div>
+
+          <!-- Package 2: App UI -->
+          <div class="service-card reveal">
+            <div class="service-info">
+              <div class="service-icon-wrapper">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="service-details">
+                <h3>Design Mobile App UI</h3>
+                <ul class="service-features">
+                  <li><i class="fas fa-check"></i> Desain Tampilan Aplikasi</li>
+                  <li><i class="fas fa-check"></i> Hingga 5 Layar Utama</li>
+                  <li><i class="fas fa-check"></i> Prototyping (Klik-klik)</li>
+                  <li><i class="fas fa-check"></i> Style Guide & Aset</li>
+                </ul>
+              </div>
+            </div>
+            <div class="service-action">
+              <div class="price-tag">Rp 1.5jt</div>
+              <div class="price-period">per paket</div>
+              <a href="https://wa.me/6283861298487?text=Halo%20saya%20mau%20tanya%20tentang%20jasa%20ui%20ux%20si%20mayonice" target="_blank" class="btn btn-primary btn-small">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION (REVISED: VERTICAL CARDS WITH PRICE) -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="section-title">Katalog <span>Design</span></h2>
+        <p class="section-subtitle">Contoh hasil desain UI yang siap diimplementasikan developer Anda.</p>
+
+        <div class="portfolio-grid">
+          
+          <!-- Card 1 -->
+          <div class="portfolio-item reveal">
+            <!-- Gambar Vertikal (Rasio Tinggi) -->
+            <img src="https://placehold.co/300x600/eee/d4af37?text=Mobile+UI+1" alt="E-Wallet UI" class="portfolio-thumb">
+            <div class="portfolio-info">
+              <div>
+                <span class="portfolio-tag">Mobile App Design</span>
+                <h3 class="portfolio-title">E-Wallet Gold UI</h3>
+              </div>
+              <div>
+                <span class="portfolio-price">Rp 300.000</span>
+                <a href="https://wa.me/6283861298487?text=Halo%20saya%20mau%20tanya%20tentang%20jasa%20ui%20ux%20si%20mayonice" target="_blank" class="btn btn-primary btn-small btn-block">
+                  <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="portfolio-item reveal">
+            <!-- Gambar Vertikal -->
+            <img src="https://placehold.co/300x600/eee/AA8C2C?text=Mobile+UI+2" alt="Food Delivery UI" class="portfolio-thumb">
+            <div class="portfolio-info">
+              <div>
+                <span class="portfolio-tag">Mobile App Design</span>
+                <h3 class="portfolio-title">Food Delivery UI</h3>
+              </div>
+              <div>
+                <span class="portfolio-price">Rp 350.000</span>
+                <a href="https://wa.me/6283861298487?text=Halo%20saya%20mau%20tanya%20tentang%20jasa%20ui%20ux%20si%20mayonice" target="_blank" class="btn btn-primary btn-small btn-block">
+                  <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="portfolio-item reveal">
+            <!-- Gambar Vertikal -->
+            <img src="https://placehold.co/300x600/eee/1a1a1a?text=Mobile+UI+3" alt="Crypto UI" class="portfolio-thumb">
+            <div class="portfolio-info">
+              <div>
+                <span class="portfolio-tag">Mobile App Design</span>
+                <h3 class="portfolio-title">Crypto Dark Mode</h3>
+              </div>
+              <div>
+                <span class="portfolio-price">Rp 400.000</span>
+                <a href="https://wa.me/6283861298487?text=Halo%20saya%20mau%20tanya%20tentang%20jasa%20ui%20ux%20si%20mayonice" target="_blank" class="btn btn-primary btn-small btn-block">
+                  <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+              </div>
+            </div>
+          </div>
+
+           <!-- Card 4 (Optional Tambahan) -->
+           <div class="portfolio-item reveal">
+            <!-- Gambar Vertikal -->
+            <img src="https://placehold.co/300x600/eee/666?text=Mobile+UI+4" alt="Social Media UI" class="portfolio-thumb">
+            <div class="portfolio-info">
+              <div>
+                <span class="portfolio-tag">Mobile App Design</span>
+                <h3 class="portfolio-title">Social Connect UI</h3>
+              </div>
+              <div>
+                <span class="portfolio-price">Rp 300.000</span>
+                <a href="https://wa.me/6283861298487?text=Halo%20saya%20mau%20tanya%20tentang%20jasa%20ui%20ux%20si%20mayonice" target="_blank" class="btn btn-primary btn-small btn-block">
+                  <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section class="location" id="location">
+      <div class="container">
+        <h2 class="section-title">Lokasi <span>Studio</span></h2>
+        <p class="section-subtitle">Kunjungi kami atau hubungi untuk diskusi desain.</p>
+        
+        <div class="location-container reveal">
+          <div class="location-info">
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="info-text">
+                <h4>Alamat</h4>
+                <p>Jl. Dieng Atas Jl. Lo'Andeng No.19, Kalisongo, Kec. Dau, Kabupaten Malang, Jawa Timur</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-envelope"></i></div>
+              <div class="info-text">
+                <h4>Email</h4>
+                <p>hello@simayonice.com</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="info-text">
+                <h4>WhatsApp</h4>
+                <p>+62 83-861-298-487</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.351092477996!2d112.581700573198!3d-7.9626213793516225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788257f5623ab3%3A0xaa2966f7edf2e33c!2sKitaro%20Kidz%20%26%20Fashion!5e0!3m2!1sid!2sid!4v1764866049602!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta" id="contact">
+      <div class="container reveal">
+        <h2>Butuh Desain Custom?</h2>
+        <p>Diskusikan konsep visual yang Anda inginkan. Gratis konsultasi.</p>
+        <a href="https://wa.me/6283861298487?text=Halo%20saya%20mau%20tanya%20tentang%20jasa%20ui%20ux%20si%20mayonice" target="_blank" class="btn btn-primary" style="border: 2px solid var(--primary-gold);">
+          <i class="fab fa-whatsapp"></i> Chat WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3><i class="fas fa-layer-group"></i> Si Mayonice</h3>
+            <p>Jasa UI/UX Design profesional. Kami fokus pada visual dan experience, membantu developer Anda mewujudkan aplikasi impian.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Jasa Design</a></li>
+              <li><a href="#portfolio">Katalog</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Media Sosial</h4>
+            <ul>
+              <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+              <li><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2024 Si Mayonice. Design Services Only.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      // Toggle Mobile Menu
+      const menuBtn = document.getElementById('menuBtn');
+      const navLinks = document.getElementById('navLinks');
+
+      menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuBtn.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuBtn.querySelector('i').classList.remove('fa-times');
+          menuBtn.querySelector('i').classList.add('fa-bars');
+        });
+      });
+
+      // Scroll Animation (Reveal)
+      window.addEventListener('scroll', reveal);
+
+      function reveal() {
+        var reveals = document.querySelectorAll('.reveal');
+
+        for (var i = 0; i < reveals.length; i++) {
+          var windowheight = window.innerHeight;
+          var revealtop = reveals[i].getBoundingClientRect().top;
+          var revealpoint = 150;
+
+          if (revealtop < windowheight - revealpoint) {
+            reveals[i].classList.add('active');
+          }
+        }
+      }
+      reveal();
+    </script>
+  </body>
+</html>
